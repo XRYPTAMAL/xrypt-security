@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { db, collection, addDoc, getDocs, query, orderBy, limit } from "./firebase";
 
 // ── helpers ────────────────────────────────────────────────────────────────
 
@@ -358,7 +359,7 @@ export default function XryptSecurity() {
             onChange={e => { setAdminInput(e.target.value); setAdminError(false); }}
             onKeyDown={e => {
               if (e.key === "Enter") {
-                if (adminInput === ADMIN_PASSWORD) { setAdminUnlocked(true); setAdminError(false); }
+                if (adminInput === ADMIN_PASSWORD) { setAdminUnlocked(true); setAdminError(false); loadFirebaseHistory(); }
                 else { setAdminError(true); setAdminInput(""); }
               }
             }}
@@ -371,7 +372,7 @@ export default function XryptSecurity() {
           )}
           <div style={{display:"flex", gap:"10px", justifyContent:"center", marginTop:"6px"}}>
             <button className="scan-btn" style={{...S.scanBtn, marginTop:0, maxWidth:"160px"}} onClick={() => {
-              if (adminInput === ADMIN_PASSWORD) { setAdminUnlocked(true); setAdminError(false); }
+              if (adminInput === ADMIN_PASSWORD) { setAdminUnlocked(true); setAdminError(false); loadFirebaseHistory(); }
               else { setAdminError(true); setAdminInput(""); }
             }}>▶ UNLOCK</button>
             <button className="sec-btn" style={S.secondaryBtn} onClick={() => { setShowPanel(false); setAdminInput(""); setAdminError(false); }}>
