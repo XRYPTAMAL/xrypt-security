@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { db, collection, addDoc, getDocs, query, orderBy, limit } from "./firebase";
+import { db, ref, push, query, orderByChild, limitToLast, get } from "./firebase";
 
 // ── helpers ────────────────────────────────────────────────────────────────
 

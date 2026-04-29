@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit } from "firebase/firestore";
+import { getDatabase, ref, push, query, orderByChild, limitToLast, get } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAdM1wr9LsJHdO4A-xwQoWeO3_m4I9qeBQ",
@@ -12,5 +12,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export { collection, addDoc, getDocs, query, orderBy, limit };
+export const db = getDatabase(app);
+export { ref, push, query, orderByChild, limitToLast, get };
